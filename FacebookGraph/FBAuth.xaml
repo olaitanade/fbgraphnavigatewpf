@@ -1,0 +1,13 @@
+﻿<Window xmlns:my="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"  x:Class="FacebookGraph.FBAuth"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:win="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        Title="FBAuthentication" Height="500" Width="500">
+    <DockPanel x:Name="DocPanel" LastChildFill="True">
+        <TextBox BorderThickness="1" Margin="5" x:Name="addressTextBox" IsEnabled="False" DockPanel.Dock="Top" />
+        <Button Name="authbtn" Click="authbtn_Click" Margin="5" Width="250" DockPanel.Dock="Top">Authenticate after login to facebook</Button>
+        <my:WindowsFormsHost>
+            <win:WebBrowser x:Name="browser" Navigated="browser_Navigated"></win:WebBrowser>
+        </my:WindowsFormsHost>
+    </DockPanel>
+</Window>

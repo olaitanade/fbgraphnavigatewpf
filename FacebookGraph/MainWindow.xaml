@@ -1,0 +1,88 @@
+﻿<Controls:MetroWindow x:Class="FacebookGraph.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        BorderBrush="{DynamicResource AccentColorBrush}"
+        BorderThickness="1"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+                      Loaded="MetroWindow_Loaded"
+        Title="Facebook Page Discovery" Height="625" Width="750">
+    <Grid Margin="7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" Margin="5">
+            <TabItem Header="Search">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Name="searchtxt" MouseDoubleClick="searchtxt_MouseDoubleClick" Controls:TextBoxHelper.Watermark="search keyword ..." 
+                             Margin="5" Grid.Column="0" Grid.Row="0"></TextBox>
+                        <Button Name="searchbtn" Click="searchbtn_Click" Grid.Column="1" Grid.Row="0" Margin="5" Padding="5">Search</Button>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="0">
+                            <TextBlock Margin="5" VerticalAlignment="Center">Result limit</TextBlock>
+                            <TextBox Margin="7" Width="50" Name="noOfCursor" Text="100" ></TextBox>
+                            <TextBlock Margin="75,5,10,5" VerticalAlignment="Center">From</TextBlock>
+                            <DatePicker Name="fromdate" SelectedDateFormat="Long" VerticalAlignment="Center"></DatePicker>
+                            <TextBlock Margin="15,5,10,5" VerticalAlignment="Center">To</TextBlock>
+                            <DatePicker Name="todate" SelectedDateFormat="Long" VerticalAlignment="Center"></DatePicker>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel VerticalAlignment="Stretch"  Grid.Row="1" Margin="15,5" >
+                        <TextBlock TextAlignment="Center" Padding="5" FontSize="18">Results</TextBlock>
+                        <ScrollViewer>
+
+                            <DataGrid AutoGenerateColumns="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MinHeight="280" MaxHeight="450"   Name="pagelistview" HorizontalContentAlignment="Center">
+
+                            </DataGrid>
+                        </ScrollViewer>
+                        
+                            
+                            <Button Name="savefile_btn" IsEnabled="False" Click="savefile_btn_Click"  Margin="30,10">Export to Csv</Button>
+                        
+                        <ProgressBar Width="450"  Name="total_progressbar" Visibility="Visible"></ProgressBar>
+                        
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Help">
+                <ScrollViewer>
+                    <StackPanel Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <TextBlock HorizontalAlignment="Center" FontSize="17" FontWeight="Medium" Margin="5">How To Use The Software</TextBlock>
+                        <Expander Margin="5" Padding="5" Header="Step 1:  Enter a search keyword or phrase" IsExpanded="True">
+                            <TextBlock FontSize="13" Padding="5">1. Enter into the search box a <Bold>keyword or phrase</Bold>  you want to search for on facebook. <LineBreak></LineBreak>
+                            2. You can enter <Bold>any language</Bold> of your choice in the search<LineBreak></LineBreak>
+                                3. Then enter the <Bold>number of results</Bold> you would like to get for the search in the limit textbox.
+                            </TextBlock>
+
+                        </Expander>
+                        <Expander Margin="5" Padding="5" Header="Step 2: Click the search button">
+                            <TextBlock FontSize="13" Padding="5">1. Click the search button to begin the search on facebook.
+                           </TextBlock>
+                        </Expander>
+                        <Expander Margin="5" Padding="5" Header="Step 3: Export Results">
+                            <TextBlock FontSize="13" Padding="5">1. Click the export to csv button and the results will be in a csv file whose location and name would be shown.<LineBreak></LineBreak>
+                            Thanks for your patience.</TextBlock>
+                        </Expander>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" Margin="5">Copyright 2017 Tellula</TextBlock>
+    </Grid>
+</Controls:MetroWindow>
